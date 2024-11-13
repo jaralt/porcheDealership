@@ -1,8 +1,9 @@
+
 public class GasCar extends Car {
     private double fuelTankCapacity;
 
-    public GasCar(String make, String model, int year, String color, double price, int mileage, double fuelTankCapacity) {
-        super(make, model, year, color, price, mileage, "Gas");
+    public GasCar(String make, String model, int year, String color, double price, int mileage, double fuelTankCapacity, String vin) {
+        super(make, model, year, color, price, mileage, "Gas", vin);
         this.fuelTankCapacity = fuelTankCapacity;
     }
 
