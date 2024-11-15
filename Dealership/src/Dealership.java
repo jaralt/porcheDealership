@@ -25,23 +25,27 @@ public class Dealership {
             
             
         }
-        
-        
-        //implement vin with hashset
+      
     }
     
-    public void buyCar(Car car) {
+    public void buyCar(String vin) {
+    	Car car = carMap.get(vin);
         if (inventory.contains(car)) {
             inventory.remove(car); 
+            carMap.remove(vin);
             System.out.println("Car sold for $" + car.getPrice());
         } else {
-            System.out.println("This car is not available in the inventory.");
+            System.out.println("This car is not available in the inventory. Make sure you enter a VIN with 3 numbers");
         }
     }
+    
+
+
 
     
-    public void tradeInCar(Car car) {
+    public void tradeInCar(String vin) {
         double tradeInValue;
+        Car car = carMap.get(vin);
         int year = car.getYear();
 
         switch(year) {
@@ -64,6 +68,10 @@ public class Dealership {
         
       
         System.out.println("Your Trade In Value is: $" + tradeInValue);
+    }
+    
+    public Car findCarByVin(String vin) {
+        return carMap.get(vin);
     }
 
 }

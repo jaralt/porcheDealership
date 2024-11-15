@@ -30,24 +30,33 @@ public class DealershipApp {
         while (running) {
             System.out.println("Welcome to the Porsche Dealership. Choose an option:");
             System.out.println("1. View Inventory");
-            System.out.println("2. Buy Car");
-            System.out.println("3. Trade-In Car");
-            System.out.println("4. Exit");
+            System.out.println("2. Find a Specific Car By VIN");
+            System.out.println("3. Buy Car");
+            System.out.println("4. Trade-In Car");
+            System.out.println("5. Exit");
             
             int choice = scanner.nextInt();
             scanner.nextLine(); 
-            
+            String vin;
             switch (choice) {
                 case 1:
                     dealership.displayInventory();
                     break;
+                   
                 case 2:
-                    dealership.buyCar(null);
-                    break;
+                	System.out.println("Enter the VIN of the car you would like to view");
+                	 vin = scanner.nextLine();
+                	 break;
+      
                 case 3:
-                    // Code to trade-in a car
+                	System.out.println("Please enter the vin of the car you would like to buy");
+                	vin = scanner.nextLine();
+                    dealership.buyCar(vin);
                     break;
                 case 4:
+                    // Code to trade-in a car
+                    break;
+                case 5:
                     running = false;
                     break;
                 default:
