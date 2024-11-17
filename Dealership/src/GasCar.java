@@ -1,6 +1,6 @@
 
 public class GasCar extends Car {
-    private double fuelTankCapacity;
+    final double fuelTankCapacity;
 
     public GasCar(String make, String model, int year, String color, double price, int mileage, double fuelTankCapacity, String vin) {
         super(make, model, year, color, price, mileage, "Gas", vin);
@@ -12,4 +12,6 @@ public class GasCar extends Car {
         super.printCarDetails();
         System.out.println("Fuel Tank Capacity: " + fuelTankCapacity + " gallons");
     }
+    
+    
 }

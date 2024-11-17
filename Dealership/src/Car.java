@@ -28,10 +28,29 @@ public class Car {
                 ", Engine Type: " + engineType + ", VIN: " + vin);
     	
     }
+    
+    public void printCarDetails(String vin) {
+    	
+    	System.out.println("Make: " + make + ", Model: " + model + ", Year: " + year +
+                ", Color: " + color + ", Price: $" + price + ", Mileage: " + mileage +
+                ", Engine Type: " + engineType + ", VIN: " + vin);
+    	
+    }
 
 	public String getMake() {
 		return make;
 	}
+
+	public String getVin() {
+		return vin;
+	}
+
+	public void setVin(String vin) {
+		this.vin = vin;
+	}
+
+
+
 
 	public void setMake(String make) {
 		this.make = make;
@@ -85,12 +104,6 @@ public class Car {
 		this.engineType = engineType;
 	}
 
-    public String getVin() {
-		return vin;
-	}
-
-	public void setVin(String vin) {
-		this.vin = vin;
-	}
+   
 
 }

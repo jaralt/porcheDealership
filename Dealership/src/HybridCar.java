@@ -1,8 +1,8 @@
 
 
 public class HybridCar extends Car {
-    private double batteryCapacity;
-    private double fuelTankCapacity;
+    final double batteryCapacity;
+    final double fuelTankCapacity;
 
     public HybridCar(String make, String model, int year, String color, double price, int mileage, double batteryCapacity, double fuelTankCapacity,String vin) {
         super(make, model, year, color, price, mileage, "Hybrid", vin);
