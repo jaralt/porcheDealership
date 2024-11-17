@@ -2,8 +2,27 @@ import java.util.*;
 
 public class CarFactory {
     private static final String[] availableColors = { "Red", "Blue", "Black", "White", "Silver", "Gray", "Green", "Orange", "Grey" }; 
-    private static final String[] availableMake = { "Porsche"}; 
-    private static final String[] availableModel = { "Red", "Blue", "Black", "White", "Silver", "Gray", "Green", "Orange", "Grey" }; //implement same way as colors
+    private static final String[] availableModels = {
+            "Taycan",
+            "Taycan Turbo",
+            "Taycan 4S",
+            "911 GT3",
+            "Cayenne",
+            "Panamera",
+            "911 Carrera",
+            "Cayenne E-Hybrid",
+            "Panamera 4 E-Hybrid",
+            "Macan",
+            "911 Turbo",
+            "718 Boxster",
+            "718 Cayman",
+            "Panamera Sport Turismo",
+            "Cayenne Coupe",
+            "Macan S",
+            "911 GT2 RS",
+            "718 Spyder",
+            "Taycan Cross Turismo"
+    };
 
     private static Scanner scanner = new Scanner(System.in);
 
@@ -15,6 +34,18 @@ public class CarFactory {
             System.out.println("Invalid color! Please choose from: " + Arrays.toString(availableColors));
             return null;
         }
+        
+        if(!isValidMake(make)) {
+        	System.out.println("Invalid make! This is a Porsche dealership");
+        	return null;
+        }
+        
+        if(isValidModel(model)) {
+        	
+        	System.out.println("Invalid model! Please choose from: " + Arrays.toString(availableModels));
+        	
+        }
+        
 
         switch (engineType.toLowerCase()) {
             case "gas":
@@ -41,6 +72,7 @@ public class CarFactory {
     }
 
     private static boolean isValidColor(String color) { //ChatGPT helped with this idea. before we let users type any string for color. We needed to use an Array in our project and this was its suggestion
+    													//We decided to implement it ourselves for Make and Model too
         for (String validColor : availableColors) {
             if (validColor.equalsIgnoreCase(color)) {
                 return true;
@@ -48,4 +80,28 @@ public class CarFactory {
         }
         return false;
     }
+    
+    
+    private static boolean isValidMake(String make) {
+    	
+    	if (make.equalsIgnoreCase("Porsche")) {
+    		
+    		return true;
+    	}
+    
+    	return false;
+    }
+    
+    private static boolean isValidModel(String model) {
+    	
+    	for (String validModel : availableModels) {
+    		
+    		if (model.equalsIgnoreCase(model)) {
+    			return true;
+    		}
+    	}
+    	return false;
+    	
+    }
 }
+

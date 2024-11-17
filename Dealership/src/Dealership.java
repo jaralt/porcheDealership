@@ -141,6 +141,7 @@ public class Dealership {
     
     private double calculateTradeInValue(Car car) {
         double tradeInValue;
+        double  mileageDepreciation;
 
         int year = car.getYear();
         switch (year) {
@@ -160,11 +161,22 @@ public class Dealership {
 
         switch (car.getEngineType().toLowerCase()) {
             case "electric":
-                tradeInValue *= 0.8;
+            	
+              mileageDepreciation = (car.getMileage() * .18); // how much electric cars depreciate per mile according to google
+            	
+                tradeInValue -= mileageDepreciation;
+                
                 break;
             case "hybrid":
-                tradeInValue *= 1.2;
+            	 mileageDepreciation = (car.getMileage() * 0.09);// how much hybrid cars depreciate per mile according to google
+                tradeInValue -= mileageDepreciation;
                 break;
+        
+        case "gas": 
+            	 mileageDepreciation = (car.getMileage() * .11);// how much gas cars depreciate per mile according to google
+                tradeInValue -= mileageDepreciation;
+                break;
+        	
         }
 
         return tradeInValue;
