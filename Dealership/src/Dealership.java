@@ -30,10 +30,18 @@ public class Dealership {
         }
     }
 
-    public void buyCar(String vin) {
-        Car car = carMap.get(vin);
-        if (inventory.contains(car)) {
-        	double total = car.getPrice();
+    public void buyCar(String vin, double tradeInValue) {
+        Car car = carMap.get(vin); 
+        if (car != null) {
+            double newCarPrice = car.getPrice();
+            double finalPrice = newCarPrice - tradeInValue;
+
+            System.out.println("The " + car.getYear() + " " + car.getModel() + " is priced at $" + newCarPrice);
+
+            if (tradeInValue > 0) {
+                System.out.println("After applying your trade-in value of $" + tradeInValue + 
+                                   ", the final price is $" + finalPrice);
+            }
         	
         	System.out.println("Would you like to pay over time? We don't charge interest: ");
         	String choice = scanner.nextLine();
@@ -46,9 +54,9 @@ public class Dealership {
         		
         		
         		
-        		double monthlyCost = total/months;
+        		double monthlyCost = finalPrice/months;
         		
-        		System.out.println("The " + car.getYear() + " " + car.getModel() + " sold for $" + total);
+        		System.out.println("The " + car.getYear() + " " + car.getModel() + " sold for $" + finalPrice);
         		System.out.println();
         		System.out.println("Your monthly payment is $" + monthlyCost);
         		
@@ -56,7 +64,7 @@ public class Dealership {
         	
         	else {
         		
-        		System.out.println("The " + car.getModel() + "sold for $" + total);
+        		System.out.println("The " + car.getModel() + "sold for $" + finalPrice);
      
         	}
         	
@@ -80,11 +88,12 @@ public class Dealership {
     	else {
     		
     		
-        System.out.println("Enter the Engine Type (Gas, Hybrid, Electric):");
+        System.out.println("Enter the EngineType (Gas, Hybrid, Electric):");
         String engineType = scanner.nextLine();
         
         System.out.println("Enter the make of the car:");
         String make = scanner.nextLine();
+        
         
         System.out.println("Enter the model of the car:");
         String model = scanner.nextLine();
@@ -114,8 +123,21 @@ public class Dealership {
             inventory.add(tradedCar); 
             carMap.put(vin, tradedCar);
             System.out.println("Car successfully traded in and added to inventory.");
+            
+            
+            System.out.println("Would you like to purchase a new car using this trade-in value? (yes/no)");
+            String response = scanner.nextLine();
+            if (response.equalsIgnoreCase("yes")) {
+            	System.out.println("Here is a list of cars in our inventory: ");
+            	System.out.println();
+            	 displayInventory();
+                System.out.println("Enter the VIN of the car you'd like to purchase:");
+                String newCarVin = scanner.nextLine();
+                buyCar(newCarVin, tradeInValue); 
+            }
+            
         } else {
-            System.out.println("Trade-in failed due to invalid input.");
+            System.out.println("Error! Invalid input!");
         }
     	}
     }
@@ -181,6 +203,7 @@ public class Dealership {
 
         return tradeInValue;
     }
+  
 }
 
 

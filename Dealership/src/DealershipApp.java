@@ -52,7 +52,7 @@ public class DealershipApp {
                 case 3:
                 	System.out.println("Please enter the vin of the car you would like to buy");
                 	vin = scanner.nextLine();
-                    dealership.buyCar(vin);
+                    dealership.buyCar(vin, 0);
                     break;
                 case 4:
                 	 System.out.println("Please Enter the VIN of the car you are trading in:");

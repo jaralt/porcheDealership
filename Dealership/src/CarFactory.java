@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class CarFactory {
-    private static final String[] availableColors = { "Red", "Blue", "Black", "White", "Silver", "Gray", "Green", "Orange", "Grey" }; 
+    private static final String[] availableColors = { "Red", "Blue", "Black", "White", "Silver", "Gray", "Green", "Orange", "Grey", "Pink" }; 
     private static final String[] availableModels = {
             "Taycan",
             "Taycan Turbo",
@@ -40,10 +40,9 @@ public class CarFactory {
         	return null;
         }
         
-        if(isValidModel(model)) {
-        	
-        	System.out.println("Invalid model! Please choose from: " + Arrays.toString(availableModels));
-        	
+        if (!isValidModel(model)) { 
+            System.out.println("Invalid model! Please choose from: " + Arrays.toString(availableModels));
+            return null;
         }
         
 
@@ -84,7 +83,7 @@ public class CarFactory {
     
     private static boolean isValidMake(String make) {
     	
-    	if (make.equalsIgnoreCase("Porsche")) {
+    	if (make.equalsIgnoreCase("P`orsche")) {
     		
     		return true;
     	}
@@ -96,12 +95,16 @@ public class CarFactory {
     	
     	for (String validModel : availableModels) {
     		
-    		if (model.equalsIgnoreCase(model)) {
+    		if (model.equalsIgnoreCase(validModel)) {
     			return true;
     		}
     	}
     	return false;
     	
     }
-}
+    
+    
+   
+    }
+
 
